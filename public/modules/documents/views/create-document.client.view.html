@@ -1,0 +1,48 @@
+<!-- <section data-ng-controller="DocumentsController">
+    <div class="page-header">
+        <h1>New Document</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section> -->
+
+
+<section data-ng-controller="OFCreateCtrl as vm">
+    <div class="modal-header">
+        <h3 class="modal-title">Listado de documentos</h3>
+    </div>
+    <div class="modal-body">
+  <table class="table">
+                        <th>Fecha de Ingreso</th>
+                        <th>Usuario</th>
+                        <th style="text-align: center">Cargar</th>
+
+                        <tr ng-repeat="doc in docList">
+                          <td> {{doc.createdDate | date: 'dd/MM/yyyy' }} </td>
+                          <td> {{doc.createUser.displayName}} </td>
+
+                          
+                          <td style="text-align: center">  <a class="btn btn-info" title="Editar" ng-click="vm.setResult(doc); ok();">
+                          <span class="glyphicon glyphicon-eye-open"></span><a/> </td>                       
+                        </tr>
+                   </table>
+
+
+    </div>
+</section>

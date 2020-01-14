@@ -1,0 +1,327 @@
+<section data-ng-controller="PatientsCreateController as createCtrl">
+<div class="modal-header">
+<h3 class="modal-title"><i class="fa fa-user-plus"></i> Nuevo Paciente</h3>
+Campos con <span class="requiredElement">*</span> son obligatorios
+</div>
+<div class="modal-body">
+<form id="patientRegister" name="patientRegister" novalidate>
+<div class="row">
+<div class="col-sm-4">
+<label class="control-label" for="PatientCI">C.I:  </label>  
+<label class="idRadio">
+<input type="radio"  name="optradio" ng-model="createCtrl.PatientCI.tipo" value="cedula">Ced.</label> 
+<label class="idRadio"><input type="radio" ng-model="createCtrl.PatientCI.tipo" value="passaporte" class="idRadio" name="optradio">Pas.
+</label>
+
+<!-- <label class="control-label visible-xs-block, hidden-sm hidden-md hidden-lg" for="PatientCI" >C.I.  </label>  
+<label class="idRadio visible-xs-block, hidden-sm hidden-md hidden-lg">
+<input type="radio"  name="optradio" ng-model="createCtrl.PatientCI.tipo" value="cedula">Ced.</label> 
+<label class="idRadio visible-xs-block, hidden-sm hidden-md hidden-lg"><input type="radio" ng-model="createCtrl.PatientCI.tipo" value="passaporte" class="idRadio" name="optradio">Pas.
+</label> -->
+
+<div class="controls">
+<input type="text" data-ng-model="createCtrl.PatientCI.tipovalue" name="tipovalue" id="tipovalue" class="form-control" placeholder="ej. 000-000000-0" style="">
+</div>
+</div>
+
+
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="patientFirstName">Nombres <span class="requiredElement">*</span></label>
+<div class="controls">
+<input type="text" data-ng-model="createCtrl.patientFirstName" autocomplete="false" id="patientFirstName" name="patientFirstName" autocomplete="false" class="form-control" required>
+</div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="patientLastName">Apellidos <span class="requiredElement">*</span></label>
+<div class="controls">
+<input type="text" data-ng-model="createCtrl.patientLastName" autocomplete="false"  id="patientLastName" name="patientLastName" class="form-control" required>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="patientDOB"> Fecha de Nacimiento</label>
+<div class="controls">
+<input ui-date="dateOptions" name="patientDOB" data-ng-model="createCtrl.patientDOB" autocomplete="false" data-ng-change="createCtrl.calculateAge()" class="form-control">
+</div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="patientpatientSexo">Sexo</label>
+<div class="controls">
+ <select data-ng-model="createCtrl.patientSexo" id="patientSexo" class="form-control" name="patientSexo" ng-options="value._id as value.value for value in gender" >
+<option value="" class="">-- Selecione--</option>
+</select>
+</div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="patientEC">Estado Civil</label>
+<div class="controls">
+ <select data-ng-model="createCtrl.patientEC" id="patientEC" class="form-control" name="patientEC" ng-options="value._id as value.value for value in estatusCivil" >
+<option value="" class="">-- Selecione--</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" >Tipo de Sangre</label>
+<div class="controls">
+<select data-ng-model="createCtrl.patientTipoSangre" id="patientTipoSangre" class="form-control" name="patientTipoSangre" ng-options="value._id as value.value for value in tipoSangre" >
+    <option value="" class="">-- Selecione--</option>
+</select>
+</div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" >Seguro</label>
+<div class="controls">
+<select data-ng-model="createCtrl.patientSeguro" id="patientSeguro" class="form-control" name="patientSeguro" ng-options="value._id as value.name for value in patientSeguro" >
+    <option value="" class="">-- Selecione--</option>
+</select>
+</div>
+</div>
+</div>
+
+<div class="col-sm-4  text-right">
+
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-md-12">
+<md-content class="md-padding">
+<md-tabs md-dynamic-height md-border-bottom>
+<md-tab label="Información Personal">
+<md-content class="md-padding">
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+    <label class="control-label" for="patientPais">Pais</label>
+    <div class="controls">
+        <select data-ng-model="createCtrl.pais" data-ng-change="createCtrl.filterByCity()" id="pais" class="form-control" name="pais" ng-options="value._id as value.name for value in createCtrl.paisD" >
+            <option value="" class="">-- Selecione Pais --</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label" for="patientZona">Zona</label>
+    <div class="controls">
+        <select data-ng-model="createCtrl.patientZona" id="patientZona" class="form-control" name="patientZona" ng-options="value._id as value.seguroNombre for value in seguros" >
+            <option value="" class="">-- Selecione Zona --</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label" for="patientCiudad">Ciudad</label>
+    <div class="controls">
+        <select data-ng-model="createCtrl.patientCiudad"  data-ng-change="createCtrl.filterSector()" class="form-control" ng-options="value._id as value.name for value in createCtrl.ciudad | filter:createCtrl.patientPais">
+            <option value="" class="">--Selecione Ciudad--</option>
+            <!-- <option ng-repeat="value in createCtrl.ciudad | filter:createCtrl.patientPais " value="{{value._id}}">{{value.name}}</option> -->
+        </select>
+    </div>
+</div>
+</div>
+<div class="col-md-6 text-center visible-sm-block, hidden-sm hidden-xs">
+<img ng-src="/modules/patients/img/missing.png" class="img-circle propic">
+</div> <!-- end of column -->
+</div> <!-- end of row -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label" for="patientSector">Sector</label>
+            <div class="controls">
+                <select data-ng-model="createCtrl.patientSector" id="patientSector" class="form-control" name="patientSector" ng-options="value._id as value.name for value in createCtrl.sector | filter : createCtrl.patientCiudad" >
+                    <option value="" class="">-- Selecione Sector --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="patientDireccion">Direccion</label>
+            <div class="controls">
+                <input type="text" data-ng-model="createCtrl.patientDireccion" autocomplete="false" id="patientDireccion" name="patientDireccion" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label" for="patientDireccion">Tel. Celular</label>
+                    <div class="controls">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone"></i></span>
+                            <input type="text" autocomplete="false" data-ng-model="createCtrl.patientPhones.celular" class="form-control" name="celular" placeholder="Username">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label" for="patientDireccion">Tel. Casa</label>
+                    <div class="controls">
+                        <div class="input-group">
+                           <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone-alt"></i></span> 
+                            <input type="text" class="form-control" autocomplete="false" data-ng-model="createCtrl.patientPhones.casa" placeholder="Telefono Casa" name="casa">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">Correo Electronico</label>
+                    <div class="controls">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="text" class="form-control" ng-model="createCtrl.patientEmail" autocomplete="false" placeholder="Correo Electronico">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</md-content>
+</md-tab>
+<md-tab label="Contactos de Emergencia">
+<md-content class="md-padding">
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-danger paddingcontain">
+            <div class="panel-heading">
+                Llamar en caso de emergencia
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="patientSector">Relacion con Paciente</label>
+                        <div class="controls">
+                            <select data-ng-model="createCtrl.patientEContact.tipoRelacion" id="patientSector" class="form-control" name="patientSector" ng-options="value._id as value.value for value in patientContactPerson" >
+                                <option value="" class="">-- Selecione--</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Nombres <span>*</span></label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="createCtrl.patientEContact.firstName" id="tipoRelacion" name="tipoRelacion" autocomplete="false" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Apellidos <span>*</span></label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="createCtrl.patientEContact.lastName"  id="lastName" name="lastName" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" for="patientDireccion">Tel. Celular</label>
+                        <div class="controls">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone"></i></span>
+                                <input type="text" class="form-control" data-ng-model="createCtrl.patientEContact.eTelCelular" placeholder="Telefono Celular" autocomplete="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" for="patientDireccion">Tel. Casa</label>
+                        <div class="controls">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                <input type="text" class="form-control" data-ng-model="createCtrl.patientEContact.eTelCasa" autocomplete="false" placeholder="Telefono de Casa">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" for="patientDireccion">Tel. Trabajo</label>
+                        <div class="controls">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-earphone"></i></span>
+<input type="text" class="form-control" data-ng-model="createCtrl.patientEContact.eTrabajo" placeholder="Telefono Trabajo" autocomplete="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</md-content>
+</md-tab>
+<md-tab label="Otras Informaciones">
+<md-content class="md-padding">
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Religion</label>
+            <div class="controls">
+                <select data-ng-model="createCtrl.patientReligion" id="patientReligion" class="form-control" name="patientReligion" ng-options="value._id as value.value for value in patientReligion">
+                    <option value="" class="">-- Selecione--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Idioma</label>
+            <div class="controls">
+                <select data-ng-model="createCtrl.patientIdioma" id="patientIdioma" class="form-control" name="patientIdioma" ng-options="value._id as value.value for value in patientIdioma">
+                    <option value="" class="">-- Selecione--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Nacionalidad</label>
+            <div class="controls">
+                <select data-ng-model="createCtrl.patientNacionalidad" id="patientNacionalidad" class="form-control" name="patientNacionalidad" ng-options="value._id as value.value for value in patientNacionalidad">
+                    <option value="" class="">-- Selecione--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+</md-content>
+</md-tab>
+</md-tabs>
+</md-content>
+</div>
+</div>
+</form>
+
+</div>
+<div class="modal-footer">
+        <md-button class="md-raised md-primary bodyContainer" data-ng-click="createCtrl.create(); ok();"  ng-disabled="patientRegister.$invalid"> <i class="glyphicon glyphicon-save"></i> Guardar</md-button>
+        <md-button class="md-raised md-warn" ng-click="cancel()">Cancelar</md-button>
+    </div>
+</section>

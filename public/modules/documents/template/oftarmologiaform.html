@@ -1,0 +1,314 @@
+ <div ng-controller = "OFCreateCtrl as vm">
+ <div ng-if= "vm.isSaving" class="loadsettings">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+ <form name="documentForm" ng-show="!vm.isSaving">
+ <div class="row">
+ <div class="col-sm-2">
+ <!-- <md-button class="md-raised md-primary form-control" ng-click="vm.listDocument(patient._id)"><i class="fa fa-file-text-o"></i> <span class="badge">1</span></md-button> -->
+ <button class="btn btn-primary form-control" type="button"  ng-click="vm.listDocument(patient._id)">
+  <i class="fa fa-file-text-o"></i> <span class="badge">{{docList.length}}</span>
+</button>
+
+<!--    <span>{{vm.getDocNum(patient._id)}}</span> -->
+ </div>
+
+            <div class="col-sm-10">
+             <div class="row">
+                   <div class="col-sm-12 col-md-12 col-xs-12">
+                       <div class="panel panel-primary panelhieght">
+                           <div class="panel-heading pheader">
+                              <h3 class="panelheader headerTittle">Historial Clinico</h3>
+                           </div>
+                           <div class="panel-body">
+                        <div class="form-group">
+                              <label for="comment">HC:</label>
+                            <textarea ng-model="vm.result.hc" autofocus class="form-control" rows="7" id="comment"></textarea>
+                            </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                 <div class="well well-sm"><span class="spanHeader">Agudeza Visual</span></div>
+                  <div class="row">
+                  <div class="col-md-12">
+                     <table class="table">
+                        <tr>
+                          <td>OD</td>
+                          <td>  <input type="text" data-ng-model="vm.result.av.OD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td>OI</td>
+                          <td>  <input type="text" data-ng-model="vm.result.av.OI" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                     </table>
+                     </div>
+                       
+                </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6">
+                 <div class="well well-sm"><span class="spanHeader">Refracción</span></div>
+                 <div class="row">
+                  <div class="col-md-12">
+                     <table class="table">
+                        <th></th>
+                        <th>ESF</th>
+                        <th>CIL</th>
+                        <th>EJE</th>
+                        <th>ADD</th>
+                        <tr>
+                          
+                          <td>OD</td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccion.OD.ESF" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccion.OD.CIL" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccion.OD.EJE" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccion.OD.ADD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td>OI</td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccion.OI.ESF" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccion.OI.CIL" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccion.OI.EJE" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccion.OI.ADD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                     </table>
+                     </div>
+                  </div>
+                  </div>
+                </div>
+
+                 <div class="row">
+                <div class="col-md-6">
+                 <div class="well well-sm"><span class="spanHeader">Refracción Cicoplégica</span></div>
+                 <div class="row">
+                  <div class="col-md-12">
+                     <table class="table">
+                        <th></th>
+                        <th>ESF</th>
+                        <th>CIL</th>
+                        <th>EJE</th>
+                        <th>ADD</th>
+                        <tr>
+                          
+                          <td>OD</td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccionC.OD.ESF" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccionC.OD.CIL" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccionC.OD.EJE" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccionC.OD.ADD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td>OI</td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccionC.OI.ESF" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccionC.OI.CIL" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccionC.OI.EJE" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.refraccionC.OI.ADD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                     </table>
+                     </div>
+                       
+                </div>
+                </div>
+                </div>
+
+                   <div class="row">
+                  <div class="col-md-6">
+                 <div class="well well-sm"><span class="spanHeader">Receta</span></div>
+                 <div class="row">
+                  <div class="col-md-12">
+                     <table class="table">
+                        <th></th>
+                        <th>ESF</th>
+                        <th>CIL</th>
+                        <th>EJE</th>
+                        <th>ADD</th>
+                        <tr>
+                          
+                          <td>OD</td>
+                          <td>  <input type="text" data-ng-model="vm.result.receta.OD.ESF" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.receta.OD.CIL" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.receta.OD.EJE" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.receta.OD.ADD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td>OI</td>
+                          <td>  <input type="text" data-ng-model="vm.result.receta.OI.ESF" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.receta.OI.CIL" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.receta.OI.EJE" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                          <td>  <input type="text" data-ng-model="vm.result.receta.OI.ADD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                     </table>
+                     </div>   
+                  </div>
+                  </div>
+                  </div>
+
+                    <div class="row">
+                    <div class="col-md-6">
+                 <div class="well well-sm"><span class="spanHeader">Musculatura Extrínsica</span></div>
+                 <div class="row">
+                  <div class="col-md-12">
+                     <table class="table">
+                        <tr>
+                          <td>OD</td>
+                          <td>  <input type="text" data-ng-model="vm.result.MusculaturaE.OD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td>OI</td>
+                          <td>  <input type="text" data-ng-model="vm.result.MusculaturaE.OI" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                     </table>
+                     </div>
+                       
+                </div>
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="col-md-12">
+                 <div class="well well-sm"><span class="spanHeader">Anexos</span></div>
+                     <div class="row">
+                  <div class="col-md-12">
+                  <table class="table">
+                        <tr>
+                          <td>   <textarea ng-model="vm.result.Anexos" class="form-control" rows="4" id="comment"></textarea></td>
+                        </tr>
+                     </table>
+                  </div>
+                  </div>                      
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="col-md-12">
+                 <div class="well well-sm"><span class="spanHeader">Biomicroscopía</span></div>
+                     <div class="row">
+                  <div class="col-md-12">
+                  <table class="table">
+                        <tr>
+                          <td>   <textarea ng-model="vm.result.Biomicroscopia" class="form-control" rows="4" id="comment"></textarea></td>
+                        </tr>
+                     </table>
+                  </div>
+                  </div>                      
+                </div>
+                </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                 <div class="well well-sm"><span class="spanHeader">Pupilas</span></div>
+                 <div class="row">
+                  <div class="col-md-12">
+                     <table class="table">
+                        <tr>
+                          <td>OD</td>
+                          <td>  <input type="text" data-ng-model="vm.result.pupilas.OD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td>OI</td>
+                          <td>  <input type="text" data-ng-model="vm.result.pupilas.OI" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                     </table>
+                     </div>
+                       
+                </div>
+                </div>
+
+                <div class="col-md-6">
+                 <div class="well well-sm"><span class="spanHeader">Tensión Instraocular</span></div>
+                 <div class="row">
+                  <div class="col-md-12">
+                     <table class="table">
+                        <tr>
+                          <td>OD</td>
+                          <td>  <input type="text" data-ng-model="vm.result.TI.OD" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td>OI</td>
+                          <td>  <input type="text" data-ng-model="vm.result.TI.OI" autocomplete="false"  autocomplete="false" class="form-control"></td>
+                        </tr>
+                     </table>
+                     </div>
+                       
+                </div>
+                </div>
+                </div>
+
+                  <div class="row">
+                <div class="col-md-12">
+                 <div class="well well-sm"><span class="spanHeader">Fondo de Ojo</span></div>
+                     <div class="row">
+                  <div class="col-md-12">
+                  <table class="table">
+                        <tr>
+                          <td>   <textarea ng-model="vm.result.FondoOjo" class="form-control" rows="4" id="comment"></textarea></td>
+                        </tr>
+                     </table>
+                  </div>
+                  </div>                      
+                </div>
+                </div>
+                  <div class="row">
+                <div class="col-md-12">
+                 <div class="well well-sm"><span class="spanHeader">Exámenes Complementarios</span></div>
+                     <div class="row">
+                  <div class="col-md-12">
+                  <table class="table">
+                        <tr>
+                          <td>   <textarea ng-model="vm.result.examC" class="form-control" rows="4" id="comment"></textarea></td>
+                        </tr>
+                     </table>
+                  </div>
+                  </div>                      
+                </div>
+                </div>
+                  <div class="row">
+                <div class="col-md-12">
+                 <div class="well well-sm"><span class="spanHeader">Diagnóstico</span></div>
+                     <div class="row">
+                  <div class="col-md-12">
+                  <table class="table">
+                        <tr>
+                          <td>   <textarea ng-model="vm.result.diagnostico" class="form-control" rows="4" id="comment"></textarea></td>
+                        </tr>
+                     </table>
+                  </div>
+                  </div>                      
+                </div>
+                </div>
+                  <div class="row">
+                <div class="col-md-12">
+                 <div class="well well-sm"><span class="spanHeader">Tratamiento</span></div>
+                     <div class="row">
+                  <div class="col-md-12">
+                  <table class="table">
+                        <tr>
+                          <td>   <textarea ng-model="vm.result.tratamiento" class="form-control" rows="4" id="comment"></textarea></td>
+                        </tr>
+                     </table>
+                  </div>
+                  </div>                      
+                </div>
+                </div>
+                  <div class="row">
+                   <div class="col-md-12">
+                   <div class="pull-right">
+                    <md-button class="md-raised md-primary" ng-click="vm.create(vm.result);" ng-disabled="createDoctorForm.$invalid">Guardar Documento</md-button>
+                    <md-button class="md-raised md-warn">Cancelar</md-button>
+                   </div>
+                   </div>
+                </div> 
+                </br>
+                </br>
+                </div>                                        
+                </div>
+
+     </div>
+</div> 
+</form>
+</div>

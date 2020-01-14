@@ -1,0 +1,19 @@
+<section data-ng-controller="CiudadsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Ciudads</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="ciudad in ciudads" data-ng-href="#!/ciudads/{{ciudad._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="ciudad.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="ciudad.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="ciudad.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!ciudads.$resolved || ciudads.length">
+    	No Ciudads yet, why don't you <a href="/#!/ciudads/create">create one</a>?
+    </div>
+</section>

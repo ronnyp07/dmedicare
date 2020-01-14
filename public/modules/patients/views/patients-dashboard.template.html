@@ -1,0 +1,39 @@
+<section data-ng-controller="PatientsDashBoard as pacientsDash">
+<div class="col-md-12">
+     <div class="panel panel-default">
+           <div class="panel-heading">
+           <div class="row">
+             <div class="col-md-12">
+                <div class="row">
+               <!--  <div class="col-xs-2">
+                  <img id="profilep" ng-src="modules/core/img/picProfile.png" alt="Usuario">
+                </div>  --> 
+                {{pa}}  
+                 <div class="col-xs-12">
+                    <span id="nameHeader">{{pacientsDash.patient.patientFirstName}} {{pacientsDash.patient.patientLastName}}</span><br>
+                     <span class="spanHead">{{calculateAge(pacientsDash.patient.patientDOB)}} años</span>  - <span class="spanHeadRes">{{pacientsDash.patient.patientSexo.value}}</span> - 
+                 <span class="spanHead">Nacimiento:</span> <span class="spanHeadRes">{{pacientsDash.patient.patientDOB | date:'MM/dd/yyyy'}}</span><br>
+                 <span class="spanHead">Tel:</span> <span class="spanHeadRes">{{pacientsDash.patient.patientPhones.casa}}</span>
+                 </div> 
+                 <div class="col-xs-12">
+                   <span class="spanHead">Médico de cabecera:</span> <span class="spanHeadRes">
+                    {{authentication.user.displayName}} </span><br>
+                   <span class="spanHead">Seguro Medico:</span> <span ng-if="pacientsDash.patient.patientSeguro.name" class="spanHeadRes">
+                    {{pacientsDash.patient.patientSeguro.name}} </span>
+                    <span ng-if="!pacientsDash.patient.patientSeguro.name" class="label label-danger mlabel">
+                    Paciente sin seguro medico </span><br>
+                  <span class="spanHead">Id del Paciente:</span> <span class="spanHeadRes">{{pacientsDash.patient.patientId}}</span>
+                 </div>         
+                </div>                 
+              </div>
+           </div>
+     
+
+      </div> 
+     </div>
+      <div class="row">
+          <oftarmologia-form info="pacientsDash.patient._id" patient="pacientsDash.patient"></oftarmologia-form>
+      </div>
+     
+ </div>
+</section>

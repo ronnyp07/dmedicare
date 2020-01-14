@@ -1,0 +1,190 @@
+<section ng-controller="CitasController as citasCtrl">
+    <div class="modal-body">
+        <div class="modal-body">
+            <form name="appConsultasForm" class="form-horizontal">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="glyphicon glyphicon-th"> </i>
+                        Actualizar 
+                        <i class="glyphicon glyphicon-chevron-down pull-right"></i>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 ">
+                          <div class="panelPedding">
+                               
+ <div class="row marginTopPanel">
+                 <div class="col-md-6">
+                 <div class="form-group">
+                 <label class="control-label col-sm-3">Doctor:</label>
+                 <div class="col-sm-9">
+                   <div class="controls">
+                     <select data-ng-model="citasCtrl.doctor"  class="form-control" ng-options="value._id as (value.firstName +'&nbsp;'+ value.lastName) for value in doctorList" >
+                     <option value="" class="">-- Selecione--</option>
+                     </select>
+                   </div>
+                  <!--   <input type="text" data-ng-model="createCtrl.clienteRNC" id="clienteRNC" class="form-control" name="clienteRNC" placeholder="RNC ej. 000-000000-0" style=""> -->
+                 </div>
+                </div>
+                </div>              
+                
+
+                 <div class="col-md-6">
+                      <div class="form-group">
+                 <label class="control-label col-sm-3">Localidad:</label>
+                 <div class="col-sm-9">
+                   <div class="controls">
+                     <select data-ng-model="citasCtrl.location"  class="form-control" ng-options="value._id as value.name for value in locationList" >
+                     <option value="" class="">-- Selecione--</option>
+                     </select>
+                   </div>
+                  <!--   <input type="text" data-ng-model="createCtrl.clienteRNC" id="clienteRNC" class="form-control" name="clienteRNC" placeholder="RNC ej. 000-000000-0" style=""> -->
+                 </div>
+                </div>
+                  </div>              
+                 </div>
+
+              <div class="row">
+                  <div class="col-md-6">
+
+                  <div class="form-group">
+                   <label class="control-label col-sm-3">Desde</label>
+
+                   <div class="col-sm-9">
+                  <p class="input-group" style="max-width: 100%">
+                    <input
+                      type="text"
+                      class="form-control "
+                      readonly
+                      datepicker-popup="dd MMMM yyyy"
+                      is-open="calendar.opened.dt"
+                      ng-model="startDateCalendar"
+                      datepickerOptions="calendar.dateOptions" 
+                      ng-required="true" 
+                      show-button-bar="false"
+                      name="dt"
+                      close-text="Close" >
+                    <span class="input-group-btn">
+                      <button
+                        type="button"
+                        class="btn btn-default"
+                        ng-click="calendar.open($event, 'dt')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                    </span>
+                  </p>
+                  <timepicker
+                    ng-model="startAt"
+                    hour-step="1"
+                    minute-step="15"
+                    show-meridian="true">
+                  </timepicker>
+                  </div>
+                  </div>
+                  </div>  
+                  <div class="col-md-6">
+
+                   <div class="form-group">
+                   <label class="control-label col-sm-3">Hasta</label>
+                   <div class="col-sm-9">
+                    <p class="input-group" style="max-width: 100%">
+                    <input
+                      type="text"
+                      class="form-control"
+                      readonly
+                      datepicker-popup="dd MMMM yyyy"
+                      ng-model="endDateCalendar" 
+                      is-open="calendar.opened.dtSecond"                   
+                      datepickerOptions="calendar.dateOptions" 
+                      ng-required="true" 
+                      show-button-bar="false"
+                      name="dtSecond"
+                      close-text="Close">
+                    <span class="input-group-btn">
+                      <button
+                        type="button"
+                        class="btn btn-default"
+                        ng-click="calendar.open($event, 'dtSecond')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                    </span>
+                  </p>
+                  <timepicker
+                    ng-model="endsAt"
+                    hour-step="1"
+                    minute-step="15"
+                    show-meridian="true">
+                  </timepicker>
+                  </div>    
+                  </div>
+                  </div>          
+              </div>
+
+               <br>
+
+<div class="row">
+                <div class="col-md-6">
+                 <div class="form-group">
+                 <label class="control-label col-sm-3">Tipo Cita:</label>
+                 <div class="col-sm-9">
+                   <div class="controls">
+                           <select data-ng-model="citasCtrl.appType" id="appType" class="form-control" ng-options="value._id as value.value for value in tipoConsulta" >
+                            <option value="" class="">-- Selecione--</option>
+                            </select>
+                   </div>
+                 </div>
+                </div>
+                </div> 
+           <!--        <div class="col-md-6">
+                  <div class="form-group" >
+                  <label class="control-label col-sm-2" for="name">Duracion</label>
+                  <div class="col-sm-2">
+                       <input type="text" data-ng-model="citasCtrl.duration" id="duration" class="form-control" name="duration"  style="">
+                  </div>
+
+                  </div>
+ </div> -->
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+    <label class="control-label col-sm-3">Paciente:</label>
+      <div class="col-sm-9">
+       <div class="controls">
+         <select ui-select2 id="selectedPatient" data-ng-model="citasCtrl.patient" id="patients" class="selec2Big" name="patients" data-placeholder="-- Selecione Cliente --" >
+                        <option value=""></option>
+                            <option ng-repeat="value in listPatient" value="{{value._id}}">{{value.patientFirstName}} {{value.patientLastName}}</option>
+                                
+          </select> 
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+     <div class="form-group">
+       <label class="control-label col-sm-3">Razon:</label>
+         <div class="col-sm-9">
+                      <div class="controls">
+                 <textarea rows="5" ng-trim="false" ng-model="citasCtrl.reason" name: "note" id="note" maxlength="200" class="form-control" placeholder="Nota">
+                     </textarea>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+                          </div>
+                        </div><!--End of column -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+ <button class="btn btn-success btn-lg"  ng-click="citasCtrl.create(); ok(); citasCtrl.showDoctorSave()" >Guardar &amp; Cerrar</button>
+    <button class="btn btn-warning btn-lg" ng-click="cancel()">Cancelar</button>
+</div>
+</section>

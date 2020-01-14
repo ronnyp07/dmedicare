@@ -1,0 +1,271 @@
+/*ul{
+	list-style-type: none;
+	 -webkit-padding-start: 0px;
+	 -moz-padding-start: 0px;
+	 padding-left: 0px;
+
+}
+*/
+
+/*******************
+Contenedor Principal
+**/
+/*.acordion{
+	width:  100%;
+	margin-top: 5px;
+	background: #5677fc;
+	margin-left: 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.acordion .link {
+   width: 100%;
+   display: block;
+   color: #4d4d4d;
+   font-size: 14px;
+   font-weight: 700;
+   cursor: pointer;
+   border-bottom: 1px solid #ccc;
+   -webkit-transition: all 0.4s ease;
+   -o-tramsition: all 0.4s ease;
+   tramsition: all 0.4s ease;
+}
+
+.acordion li i {
+	top: 16px;
+	margin-right: 0px;
+	font-size: 18px;
+	color: #595959;
+	-webkit-transition: all 0.4s ease;
+    -o-tramsition: all 0.4s ease;
+    tramsition: all 0.4s ease;
+}
+
+.acordion li i.fa-chevron-down{
+  /*right: 12px;*/
+ /* left: auto;
+  font-size: 16px;
+}
+
+.accordion li.open .link{
+	color: #b63b4d;
+}
+
+.accordion li.last-child .link{
+	border-bottom: 0px;
+}
+
+.accordion li.open i{
+	color: #b63b4d;
+}
+
+
+.accordion li.open i.fa-chevron-down{
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	 transform: rotate(180deg);
+
+}
+
+.submenu{
+	background: #444359;
+	font-size: 14px;
+}
+
+.submenu li {
+	padding: auto;
+	display: block;
+	border-bottom: 1px solid #4B4A5E;
+}
+
+.submenu a{
+	display: block;
+	text-decoration: none;
+	color: #d9d9d9;
+	padding-left: 10px;
+	margin-left: 0px;
+	-webkit-transition: all 0.4s ease;
+    -o-tramsition: all 0.4s ease;
+    tramsition: all 0.4s ease;
+   
+}
+.submenu a:hover{
+	background: #b63b4d;
+	color:#FFF;
+}*/
+
+ul {
+	list-style-type: none;
+}
+
+/*a {
+	color: #b63b4d;
+	text-decoration: none;
+}*/
+
+/** =======================
+ * Contenedor Principal
+ ===========================*/
+/*h1 {
+ 	color: #FFF;
+ 	font-size: 24px;
+ 	font-weight: 400;
+ 	text-align: center;
+ 	margin-top: 80px;
+ }*/
+
+h1 a {
+ 	color: #c12c42;
+ 	font-size: 16px;
+ }
+
+
+#dashLink{
+	display: block;
+ 	text-decoration: none;
+ 	color: #FFF;
+ 	-webkit-transition: all 0.25s ease;
+ 	-o-transition: all 0.25s ease;
+ 	transition: all 0.25s ease;
+}
+
+#userarea{
+	padding-top: 5px;
+    height: 30px;
+    padding-left: 15px;
+}
+
+#userarea i{
+	top: 5px;
+}
+
+#menuStart{
+	margin-top: 20px;
+}
+
+.usersetting{
+	background-color: #2196F3;
+	height: 20px;
+}
+
+#profilep{
+	 width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.14);
+    box-sizing: content-box;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.headertitle{
+	font-weight: bold;
+    font-size: 16px;
+}
+
+.headerMargin{
+	margin-bottom: 10px;
+}
+
+
+/*Patient css*/
+#nameHeader {
+    font-size: 30px;
+    font-weight: bold;
+    color: #607D8B;
+}
+.spanHead{
+	font-size: 16px;
+    font-weight: bold;
+}
+
+.spanHeadRes{
+	font-size: 16px;
+}
+
+.panelheader{
+	font-size: 25px;
+}
+
+.panelhieght{
+	height: 250px;
+}
+
+.pheader{
+	height: 40px;
+}
+
+.headerTittle{
+	    margin-top: 0px
+}
+
+.mlabel{
+    font-size: 90%;
+}
+
+
+
+/*
+====================================
+Consultas
+====================================
+*/
+.panelPedding {
+   margin-left: 10px;
+   margin-right: 10px;
+}
+#rizoncontrol{
+	width: 10.66666667%;
+    float: left;
+    margin-right: 15px;
+}
+
+.row-text-center{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+/*
+==================================
+Doctores
+==================================
+*/
+.doctorContact{
+    margin-right: 15px;
+    margin-left: 15px;
+};
+
+/*
+==================================
+Dashboard
+==================================
+*/
+.buttonsPanel{
+ 	height: 55px;
+};
+
+
+
+
+
+
+/*
+==================================
+Login
+==================================
+*/
+
+/*#dashLink:hover {
+ 	background: #b63b4d;
+ 	color: #FFF;
+ }*/
+
+
+
+/**
+ * Submenu
+ -----------------------------*/

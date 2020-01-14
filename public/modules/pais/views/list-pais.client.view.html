@@ -1,0 +1,60 @@
+<section data-ng-controller="PaisController as paisCtrl" data-ng-init="find()">
+
+<div class="col-md-10">
+     <div class="panel panel-default">
+           <div class="panel-heading">
+           <div class="row">
+                 <div class="col-md-6">
+                    <h2>Registro de Geolocalizacion</h2>
+                 </div>
+           </div>
+           </div> 
+       </div>
+       
+<div>
+
+  <md-content class="md-padding">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Pais">
+        <md-content class="md-padding">
+         <md-button class="md-raised md-primary bodyContainer" data-ng-click="paisCtrl.modelCreate('sm')"> <i class="glyphicon glyphicon-open"></i> Agregar</md-button>
+           <pais-list></pais-list>     
+        </md-content>
+      </md-tab>
+      <md-tab label="Ciudad" >
+        <md-content class="md-padding"  data-ng-controller= "ciudadController as ciudadCtrl">
+       <md-button class="md-raised md-primary bodyContainer"  data-ng-click="ciudadCtrl.modelCreate('sm')"> <i class="fa fa-plus"></i> Agregar
+       </md-button>
+       <ciudad-list></ciudad-list>
+        </md-content>
+      </md-tab>
+      <md-tab label="Sector">
+        <md-content class="md-padding" data-ng-controller= "sectorController as sectorCtrl">
+
+        <md-button class="md-raised md-primary bodyContainer"  data-ng-click="sectorCtrl.modelCreate('sm', sector)"> <i class="fa fa-plus"></i> Agregar
+       </md-button>
+          <sector-list></sector-list>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
+</div>
+ <!--    <div class="page-header">
+        <h1>Pais</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="pai in pais" data-ng-href="#!/pais/{{pai._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="pai.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="pai.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="pai.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!pais.$resolved || pais.length">
+    	No Pais yet, why don't you <a href="/#!/pais/create">create one</a>?
+    </div> -->
+</section>

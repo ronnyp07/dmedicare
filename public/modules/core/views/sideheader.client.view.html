@@ -1,0 +1,96 @@
+<section id="leftMenu" class="content" data-ng-controller="HeaderController">
+<!--<div class="col-sm-12 col-md-12">-->
+<ul slider id="accordion"  class="accordion visible-lg visible-md visible-sm hidden-xs " data-ng-show="authentication.user">
+        <li id="menuTap">
+	    <div class="profile-pic">
+         <img id="profilep" ng-src="modules/core/img/picProfile.png" alt="Usuario">
+        </div>
+		</li>
+         <li>
+			<div class="link usersetting" id="userarea"><a id="dashLink" href="#">{{authentication.user.displayName}}<i class="fa fa-chevron-down"></i></a></div>
+			<ul class="submenu">
+				<li><a href="#!/settings/profile">Ver Perfil</a></li>
+				<li><a href="#">Cambiar contraseña</a></li>
+				<li><a href="#">Salir</a></li>
+			</ul>
+		</li>
+		<li id="menuStart">
+			<div class="link"><i class="fa fa-paint-brush"></i><a href="#!/dashboards">Dashboard</a></div>
+		</li>
+		<li>
+			<div class="link"><i class="fa fa-user"></i>Gestión de Paciente<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#!/patients">Maestro Paciente</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="link"><i class="fa fa-calendar"></i>Gestión de Citas<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#!/citas">Gestor de Citas</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="link"><i class="fa  fa-cc-mastercard"></i>Facturación<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#!/citas">Gestor de Citas</a></li>
+
+			</ul>
+		</li>
+		<li>
+			<div class="link"><i class="fa fa-building"></i>Gestión Habitaciones<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#">Javascript</a></li>
+				<li><a href="#">jQuery</a></li>
+				<li><a href="#">Frameworks javascript</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="link"><i class="fa fa-plus-square"></i>Módulo de Enfermia<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#!/doctors">Maestro Enfermeria</a></li>
+				<li><a href="#">jQuery</a></li>
+				<li><a href="#">Frameworks javascript</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="link"><i class="fa fa-user-md"></i>Módulo de Doctor<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+			    <li><a href="#!/doctors">Maestro Doctores</a></li>
+				<li><a href="#">jQuery</a></li>
+				<li><a href="#">Frameworks javascript</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="link"><i class="fa fa-book"></i>Emergencias<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#">Javascript</a></li>
+				<li><a href="#">jQuery</a></li>
+				<li><a href="#">Frameworks javascript</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="link"><i class="fa fa-users"></i>Gestión de Usuario<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#">Tablets</a></li>
+				<li><a href="#">Dispositivos mobiles</a></li>
+				<li><a href="#">Medios de escritorio</a></li>
+				<li><a href="#">Otros dispositivos</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="link"><i class="fa fa-list-alt"></i>Reportes<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#">Pacientes</a></li>
+			</ul>
+		</li>
+		<li><div class="link"><i class="fa fa-cog"></i>Administrador<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				<li><a href="#!/maintains">Parametros</a></li>
+				<li><a href="#!/pais">Geolocalizacion</a></li>
+				<li><a href="#!/clientes">Aseguradoras</a></li>
+				<li><a href="#!/locations">Centro Médico </a></li>
+			</ul>
+		</li>
+	</ul>
+<!-- </div> -->
+</section>

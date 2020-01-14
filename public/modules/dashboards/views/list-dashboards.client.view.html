@@ -1,0 +1,60 @@
+<section data-ng-controller="DashboardsController" data-ng-init="find()">
+    <div class="page-header2">
+      
+
+        <div class="panel panel-success">
+           <div class="panel-heading">
+                <h1>Dashboard</h1>
+           </div> 
+            <select ui-select2 id="selectedPatient" ng-change="sendPatientChart(citasCtrl.patient)" data-ng-model="citasCtrl.patient" id="patients" class="selec2Big" name="patients" data-placeholder="-- Selecione Paciente --" >
+                        <option value=""></option>
+                            <option ng-repeat="value in listPatient" value="{{value._id}}">{{value.patientFirstName}} {{value.patientLastName}}</option>
+                                
+          </select> 
+     </div>
+
+           
+       </div>
+
+    <div class="list-group">
+        <div class="row">
+        <div ng-if= "isSaving" class="loadsettings">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+            <div class="col-xs-12 col-sm-offset-1 col-sm-11 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-7">
+            <ul dashactive class="nav nav-pills" id="dashMenu">
+              <li role="presentation" class="active menuWith"><a href="#" ng-click="setView('citados')"><label>Citados </label><span class="badge">{{checkinCount}}</span> </a></li>
+              <li role="presentation" class="menuWith"><a href="#" ng-click="setView('espera')"><label>Esperando </label><span class="badge">{{waitingCount}}</span></a></li>
+              <li role="presentation" class="menuWith"><a href="#" ng-click="setView('complete')"><label>Completados </label><span class="badge">{{completeAppCount}}</span></a></li>
+            </ul>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-10 col-sm-offset-1 col-sm-11 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-7">
+                <app-checkin ng-if="showApp == 'citados'"></app-checkin>
+                <app-waiting ng-if="showApp == 'espera'"></app-waiting>
+                <app-complete ng-if="showApp == 'complete'"></app-complete>
+
+             <div class="alert alert-warning text-center" ng-if="showApp == 'citados' && checkinCount == 0">
+                No hay consultas por venir quisiera <a href="/#!/citas">Verificar Horario</a>?
+            </div>
+             <div class="alert alert-warning text-center" ng-if="showApp == 'espera' && waitingCount == 0">
+                No hay consultas en espera quisiera <a href="/#!/citas">Verificar Horario</a>?
+            </div>
+             <div class="alert alert-warning text-center" ng-if="showApp == 'complete' && completeAppCount == 0">
+                No hay consultas completadas quisiera <a href="/#!/citas">Verificar Horario</a>?
+            </div>
+            </div>
+
+        </div>  
+
+
+
+    </div>
+<!--     <div class="alert alert-warning text-center" data-ng-hide="!dashboards.$resolved || dashboards.length">
+    	No Dashboards yet, why don't you <a href="/#!/dashboards/create">create one</a>?
+    </div> -->
+</section>

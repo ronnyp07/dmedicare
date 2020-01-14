@@ -1,0 +1,323 @@
+<section data-ng-controller="SettingsController as createCtrl">
+<div class="modal-header">
+<h3 class="modal-title">Actualizar Perfil</h3>
+</div>
+<div class="modal-body">
+<div ng-if= "isSaving" class="loadsettings">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<form ng-show="!isSaving" name="userRegister"  id="userRegister">
+<div class="row">
+<div class="col-sm-4">
+<label class="control-label" for="userCI">C.I.  </label>
+<label class="idRadio">
+<input type="radio"  name="optradio" ng-model="createCtrl.authentication.user.userCI.tipo" value="cedula">Cedula</label>
+<!-- <input type="radio" ng-model="color.name" value="red"> -->
+<label class="idRadio"><input type="radio" ng-model="createCtrl.authentication.user.userCI.tipo" value="passaporte" class="idRadio" name="optradio">Pasaporte
+</label>
+<div class="controls">
+<input type="text" data-ng-model="createCtrl.authentication.user.userCI.value" name="value" id="value" class="form-control" placeholder="ej. 000-000000-0" style="">
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="userFirstName">Nombres <span>*</span></label>
+<div class="controls">
+<input type="text" data-ng-model="createCtrl.authentication.user.firstName" autocomplete="false" id="userFirstName" name="userFirstName" autocomplete="false" class="form-control">
+</div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="userLastName">Apellidos <span>*</span></label>
+<div class="controls">
+<input type="text" data-ng-model="createCtrl.authentication.user.lastName" autocomplete="false"  id="userLastName" name="userLastName" class="form-control">
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="userDOB"> Fecha de Nacimiento</label>
+<div class="controls">
+<input ui-date="dateOptions" name="userDOB" data-ng-model="createCtrl.authentication.user.userDOB" autocomplete="false" data-ng-change="createCtrl.calculateAge()" class="form-control">
+</div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="useruserSexo">Sexo</label>
+<div class="controls">
+<select data-ng-model="createCtrl.authentication.user.userSexo" id="userSexo" class="form-control"  style=""><option value="" class="">-- Seleccione Sexo --</option><option value="Masculino" label="Masculino">Masculino</option><option value="Femenino" label="Femenino">Femenino</option></select>
+</div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" for="userEC">Estatus Civil</label>
+<div class="controls">
+ <select data-ng-model="createCtrl.authentication.user.userEC" id="userEC" class="form-control" name="userSector" ng-options="value._id as value.value for value in userEstatusCivil" >
+    <option value="" class="">-- Selecione--</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" >Departamento</label>
+<div class="controls">
+<select data-ng-model="createCtrl.authentication.user.deparment" id="userTipoSangre" class="form-control" name="userTipoSangre" ng-options="value._id as value.value for value in tipoSangre" >
+    <option value="" class="">-- Selecione--</option>
+</select>
+</div>
+</div>
+</div>
+
+<div class="col-sm-4">
+<div class="form-group">
+<label class="control-label" >Tipo de Usuario</label>
+<div class="controls">
+<select data-ng-model="createCtrl.authentication.user.jobtitle" id="userSeguro" class="form-control" name="userSeguro" ng-options="value._id as value.name for value in userSeguro" >
+    <option value="" class="">-- Selecione--</option>
+</select>
+</div>
+</div>
+</div>
+
+<!-- <div class="col-sm-4">
+<label class="control-label" >Puesto de trabajo</label>	
+<div class="controls">
+<select data-ng-model="createCtrl.userSeguro" id="userSeguro" class="form-control" name="userSeguro" ng-options="value._id as value.name for value in userSeguro" >
+    <option value="" class="">-- Selecione--</option>
+</select>
+</div>
+</div> -->
+</div>
+<div class="row">
+<div class="col-md-12">
+<md-content  class="md-padding">
+<md-tabs md-dynamic-height md-border-bottom>
+<md-tab label="Información Personal">
+<md-content  class="md-padding contecttapId">
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+    <label class="control-label" for="userPais">Pais</label>
+    <div class="controls">
+        <select data-ng-model="createCtrl.authentication.user.pais" data-ng-change="createCtrl.filterByCity()" id="pais" class="form-control" name="pais" ng-options="value._id as value.name for value in createCtrl.paisD" >
+            <option value="" class="">-- Selecione Pais --</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label" for="userZona">Zona</label>
+    <div class="controls">
+        <select data-ng-model="createCtrl.authentication.user.userZona" id="userZona" class="form-control" name="userZona" ng-options="value._id as value.seguroNombre for value in seguros" >
+            <option value="" class="">-- Selecione Zona --</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label" for="userCiudad">Ciudad</label>
+    <div class="controls">
+        <select data-ng-model="createCtrl.authentication.user.ciudad"  data-ng-change="createCtrl.filterSector()" class="form-control" ng-options="value._id as value.name for value in createCtrl.ciudad | filter:createCtrl.authentication.user.pais">
+            <option value="" class="">--Selecione Ciudad--</option>
+            <!-- <option ng-repeat="value in createCtrl.ciudad | filter:createCtrl.userPais " value="{{value._id}}">{{value.name}}</option> -->
+        </select>
+    </div>
+</div>
+</div>
+<div class="col-xs-12 col-md-6 text-center">
+<img ng-src="/modules/patients/img/missing.png" class="img-circle propic">
+</div> <!-- end of column -->
+</div> <!-- end of row -->
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <div class="form-group">
+            <label class="control-label" for="userSector">Sector</label>
+            <div class="controls">
+                <select data-ng-model="createCtrl.authentication.user.sector" id="userSector" class="form-control" name="userSector" ng-options="value._id as value.name for value in createCtrl.sector | filter : createCtrl.authentication.user.ciudad" >
+                    <option value="" class="">-- Selecione Sector --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="userDireccion">Direccion</label>
+            <div class="controls">
+                <input type="text" data-ng-model="createCtrl.authentication.user.userDireccion" autocomplete="false" id="userDireccion" name="userDireccion" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                    <label class="control-label" for="userDireccion">Tel. Celular</label>
+                    <div class="controls">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone"></i></span>
+                            <input type="text" autocomplete="false" data-ng-model="createCtrl.authentication.user.userPhones.celular" autocorrect="off" autocomplete="off" class="form-control" name="celular" placeholder="Username">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                    <label class="control-label" for="userDireccion">Tel. Casa</label>
+                    <div class="controls">
+                        <div class="input-group">
+                            <input type="text" class="form-control" autocomplete="false" data-ng-model="createCtrl.authentication.user.userPhones.casa" autocorrect="off" autocomplete="off" placeholder="Telefono Casa" name="casa">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="form-group">
+                    <label class="control-label">Correo Electronico</label>
+                    <div class="controls">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="text" class="form-control" ng-model="createCtrl.authentication.user.email" autocomplete="false" placeholder="Correo Electronico">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</md-content>
+</md-tab>
+<md-tab label="Centros Medicos">
+<md-content class="md-padding contecttapId">
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Religion</label>
+            <div class="controls">
+                <select data-ng-model="createCtrl.userReligion" id="userReligion" class="form-control" name="userReligion" ng-options="value._id as value.value for value in userReligion">
+                    <option value="" class="">-- Selecione--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Idioma</label>
+            <div class="controls">
+                <select data-ng-model="createCtrl.userIdioma" id="userIdioma" class="form-control" name="userIdioma" ng-options="value._id as value.value for value in userIdioma">
+                    <option value="" class="">-- Selecione--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Nacionalidad</label>
+            <div class="controls">
+                <select data-ng-model="createCtrl.userNacionalidad" id="userNacionalidad" class="form-control" name="userNacionalidad" ng-options="value._id as value.value for value in userNacionalidad">
+                    <option value="" class="">-- Selecione--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+</md-content>
+</md-tab>
+<md-tab label="Contactos de Emergencia">
+<md-content class="md-padding contecttapId">
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-danger paddingcontain">
+            <div class="panel-heading">
+                Llamar en caso de emergencia
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="userSector">Relacion con Paciente</label>
+                        <div class="controls">
+                            <select data-ng-model="createCtrl.authentication.user.userEContact.tipoRelacion" id="userSector" class="form-control" name="userSector" ng-options="value._id as value.value for value in userContactPerson" >
+                                <option value="" class="">-- Selecione--</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Nombres <span>*</span></label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="createCtrl.authentication.user.userEContact.contactFirstName" id="tipoRelacion" name="tipoRelacion" autocomplete="false" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Apellidos <span>*</span></label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="createCtrl.authentication.user.userEContact.contactLastName"  id="lastName" name="lastName" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" for="userDireccion">Tel. Celular</label>
+                        <div class="controls">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                <input type="text" class="form-control" data-ng-model="createCtrl.authentication.user.userEContact.contactCelular" placeholder="Telefono Celular" autocomplete="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" for="userDireccion">Tel. Casa</label>
+                        <div class="controls">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                <input type="text" class="form-control" data-ng-model="createCtrl.authentication.user.userEContact.userEContact.contactCasa" autocomplete="false" placeholder="Telefono de Casa">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" for="userDireccion">Tel. Trabajo</label>
+                        <div class="controls">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                <input type="text" class="form-control" data-ng-model="createCtrl.authentication.user.userEContact.userEContact.contactTrabajo" placeholder="Telefono Trabajo" autocomplete="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</md-content>
+</md-tab>
+</md-tabs>
+</md-content>
+</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<md-button class="md-raised md-primary bodyContainer pull-right" data-ng-click="createCtrl.updateUserProfile(createCtrl.authentication.user, userRegister.$valid); ok();"> <i class="glyphicon glyphicon-save"></i> Guardar Cambios</md-button>
+	</div>
+</div>
+</form>
+</div>
+</section>
