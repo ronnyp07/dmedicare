@@ -49,7 +49,7 @@
     "swig": "~1.4.1"
   },
   "devDependencies": {
-    "supertest": "~0.14.0",
+    "supertest": "~6.3.3",
     "should": "~4.1.0",
     "grunt-env": "~0.4.1",
     "grunt-node-inspector": "~0.1.3",
